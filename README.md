@@ -1,3 +1,6 @@
+### DEPRECATED
+We're moving to a new project name and slightly different file format for rc.5
+- [ng2-responsive](https://www.npmjs.com/package/ng2-responsive)
 
 # Introduction
 Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the size of the device screen and another features in Angular 2
@@ -367,6 +370,7 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
  * Christophe HOARAU
  * Kamil Breguła
  * Janne Julkunen
+ * phransyz
 
 # License
 

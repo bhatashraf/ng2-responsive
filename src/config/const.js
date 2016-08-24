@@ -8,6 +8,7 @@ exports.GLOBAL_INPUTS = {
     PIXEL_RATIO: ['1x', 'retina', '4k'],
     IE_VERSIONS: ['ie 9', 'ie 10', 'ie 11', 'ie +12']
 };
+//WEARABLES :: USER AGENTS
 exports.REG_WEARABLES = {
     IWATCH: ''
 };
@@ -94,6 +95,7 @@ exports.WINDOWS_OS_VERSION = {
     WINDOWS_PHONE_10: /(windows phone 10)/,
     WINDOWS_NT_4_0: /(windows nt 4.0|winnt4.0|winnt|windows nt)/
 };
+//MAC OS VERSION :: USER AGENTS
 exports.MAC_OS_VERSION = {
     MAC_OS: '',
 };

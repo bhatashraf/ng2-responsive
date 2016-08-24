@@ -10,12 +10,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var config_1 = require('../config/config');
+/*======== RESPONSIVE MULTIPLE =========*/
 var Responsive = (function () {
+    /*** CONSTRUCTOR ***/
     function Responsive(templateRef, _responsiveState, viewContainer) {
         this.templateRef = templateRef;
         this._responsiveState = _responsiveState;
         this.viewContainer = viewContainer;
         this.changes = new core_1.EventEmitter();
+        //Init the interface var
         this.set_values = {
             bootstrap: '',
             browser: '',
@@ -36,6 +39,7 @@ var Responsive = (function () {
             ie: false,
             sizes: false
         };
+        //Para comprobar que todos estan activos entonces cambiar el estado del elemento
         this.match_multiple = {
             bootstrap: false,
             browser: false,
@@ -46,8 +50,11 @@ var Responsive = (function () {
             ie: false,
             sizes: false
         };
+        //Show or hide option
         this._showWhenTrue = true;
+        //Global No Repeat
         this._globalNoRepeat = 0;
+        //No repeat to init responsive
         this._bootstrapNoRepeat = 0;
         this._deviceNoRepeat = 0;
         this._standardNoRepeat = 0;
@@ -56,6 +63,7 @@ var Responsive = (function () {
         this._pixelratioNoRepeat = 0;
         this._ieNoRepeat = 0;
         this._sizesNoRepeat = 0;
+        //Parameters
         this._bootstrap_user_param = [];
         this._devices_user_param = [];
         this._standard_user_param = [];
@@ -65,6 +73,7 @@ var Responsive = (function () {
         this._ie_user_param = [];
         this._sizes_user_param = [];
         this._sizes_window = "window";
+        //User parameters
         this._actives = [];
     }
     Object.defineProperty(Responsive.prototype, "responsive", {
@@ -75,43 +84,53 @@ var Responsive = (function () {
         configurable: true
     });
     ;
+    //Init method
     Responsive.prototype.init_responsive = function (value) {
         if (this.isJSON(value)) {
+            //If bootstrap object exists
             if (!!value.bootstrap && this._bootstrapNoRepeat == 0) {
                 this._bootstrap_user_param = (Array.isArray(value.bootstrap) ? value.bootstrap : [value.bootstrap]);
                 this._bootstrapNoRepeat = 1;
+                // add bootstrap subscription
                 this.set_active_subscriptions.bootstrap = true;
             }
+            //If device object exists
             if (!!value.device && this._deviceNoRepeat == 0) {
                 this._devices_user_param = (Array.isArray(value.device) ? value.device : [value.device]);
                 this._deviceNoRepeat = 1;
                 this.set_active_subscriptions.device = true;
             }
+            //If standard object exists
             if (!!value.standard && this._standardNoRepeat == 0) {
                 this._standard_user_param = (Array.isArray(value.standard) ? value.standard : [value.standard]);
                 this._standardNoRepeat = 1;
                 this.set_active_subscriptions.standard = true;
             }
+            //If orientation object exists
             if (!!value.orientation && this._orientationNoRepeat == 0) {
                 this._orientation_user_param = (Array.isArray(value.orientation) ? value.orientation : [value.orientation]);
                 this._orientationNoRepeat = 1;
                 this.set_active_subscriptions.orientation = true;
             }
+            //If browser object exists
             if (!!value.browser && this._browserNoRepeat == 0) {
                 this._browser_user_param = (Array.isArray(value.browser) ? value.browser : [value.browser]);
                 this._browserNoRepeat = 1;
                 this.set_active_subscriptions.browser = true;
             }
+            //If pixel ratio object exists
             if (!!value.pixelratio && this._pixelratioNoRepeat == 0) {
                 this._pixelratio_user_param = (Array.isArray(value.pixelratio) ? value.pixelratio : [value.pixelratio]);
                 this._pixelratioNoRepeat = 1;
                 this.set_active_subscriptions.pixelratio = true;
             }
+            //If ie object exists
             if (!!value.ie && this._ieNoRepeat == 0) {
                 this._ie_user_param = (Array.isArray(value.ie) ? value.ie : [value.ie]);
                 this._ieNoRepeat = 1;
                 this.set_active_subscriptions.ie = true;
             }
+            //If custom sizes object exists
             if (!!value.sizes && this._sizesNoRepeat == 0) {
                 var min = value.sizes.min;
                 var max = value.sizes.max;
@@ -136,12 +155,14 @@ var Responsive = (function () {
         else if (value == undefined || value === null) {
             throw new Error("Responsive directive don´t work without a param");
         }
+        //Add names of subscriptions actives
         for (var key in this.set_active_subscriptions) {
             if (this.set_active_subscriptions[key] == true) {
                 this._actives.push(key);
             }
         }
         ;
+        //Initialize subscriptios
         if (this.set_active_subscriptions.bootstrap == true)
             this._subscription_Bootstrap = this._responsiveState.elementoObservar.subscribe(this.updateBootstrap.bind(this));
         if (this.set_active_subscriptions.browser == true)
@@ -160,6 +181,7 @@ var Responsive = (function () {
             this._subscription_custom_sizes = this._responsiveState.anchoObservar.subscribe(this.updateSizes.bind(this));
     };
     Responsive.prototype.ngOnInit = function () { };
+    //Subscriptions changes
     Responsive.prototype.updateBootstrap = function (value) {
         var update = this._ifValueChanged(this._noRepeatBootstrapName, value);
         if (update) {
@@ -200,7 +222,9 @@ var Responsive = (function () {
         }
         this.updateEvent(this.set_values.sizes, 'sizes');
     };
+    //Subscriptions changes operations
     Responsive.prototype.updateEvent = function (param, type_directive) {
+        //WHEN TRUE
         if (!!this._showWhenTrue) {
             switch (type_directive) {
                 case "bootstrap":
@@ -262,6 +286,7 @@ var Responsive = (function () {
             }
         }
     };
+    //Show / Hide element
     Responsive.prototype.showHideOperations = function (show, type_directive) {
         var global_state = this.matchValues(show, type_directive);
         if (!!global_state) {
@@ -277,25 +302,32 @@ var Responsive = (function () {
             this.viewContainer.clear();
         }
     };
+    //Multiple match boolean values
     Responsive.prototype.matchValues = function (show, type_directive) {
         var match = true;
+        //Change the state of value
         if (show) {
             this.match_multiple[type_directive] = true;
         }
         else {
             this.match_multiple[type_directive] = false;
         }
+        //Match all values estates => If (all values == true) => return true else => return false
         for (var all_key in this.match_multiple) {
             for (var _i = 0, _a = this._actives; _i < _a.length; _i++) {
                 var active = _a[_i];
                 if (all_key == active && this.match_multiple[all_key] == false) {
+                    //If the match multiple actives values have one in false; return false
                     return match = false;
                 }
             }
         }
+        //Return match boolean
         return match;
     };
+    //Destroy all subscriptions
     Responsive.prototype.ngOnDestroy = function () {
+        //unsubscribe all subscriptions actives
         if (this.set_active_subscriptions.bootstrap == true)
             this._subscription_Bootstrap.unsubscribe();
         if (this.set_active_subscriptions.browser == true)
@@ -313,6 +345,7 @@ var Responsive = (function () {
         if (this.set_active_subscriptions.sizes == true)
             this._subscription_custom_sizes.unsubscribe();
     };
+    //No repeat method for bootstrap states
     Responsive.prototype._ifValueChanged = function (oldValue, newValue) {
         if (oldValue === newValue) {
             return false;
@@ -322,6 +355,7 @@ var Responsive = (function () {
             return true;
         }
     };
+    //IsJSON OBJECT solution
     Responsive.prototype.isJSON = function (value) {
         try {
             JSON.stringify(value);
@@ -342,7 +376,7 @@ var Responsive = (function () {
     ], Responsive.prototype, "changes", void 0);
     Responsive = __decorate([
         core_1.Directive({
-            selector: '[responsive]', inputs: ['responsive']
+            selector: '[responsive]'
         }), 
         __metadata('design:paramtypes', [core_1.TemplateRef, config_1.ResponsiveState, core_1.ViewContainerRef])
     ], Responsive);

@@ -16,6 +16,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var config_1 = require('../config/config');
 var responsive_base_1 = require('../config/responsive-base');
+/*
+ * PIXEL RATIO DIRECTIVES
+ * @4k @RETINA @1X
+ */
+/*======== 1x =========*/
 var Is1xPixel = (function (_super) {
     __extends(Is1xPixel, _super);
     function Is1xPixel(templateRef, viewContainer, _responsiveState) {
@@ -44,6 +49,7 @@ var Is1xPixel = (function (_super) {
     return Is1xPixel;
 }(responsive_base_1.RESPONSIVE_BASE));
 exports.Is1xPixel = Is1xPixel;
+/*======== RETINA =========*/
 var IsRetina = (function (_super) {
     __extends(IsRetina, _super);
     function IsRetina(templateRef, viewContainer, _responsiveState) {
@@ -72,6 +78,7 @@ var IsRetina = (function (_super) {
     return IsRetina;
 }(responsive_base_1.RESPONSIVE_BASE));
 exports.IsRetina = IsRetina;
+/*======== 4K =========*/
 var Is4k = (function (_super) {
     __extends(Is4k, _super);
     function Is4k(templateRef, viewContainer, _responsiveState) {
@@ -100,6 +107,9 @@ var Is4k = (function (_super) {
     return Is4k;
 }(responsive_base_1.RESPONSIVE_BASE));
 exports.Is4k = Is4k;
+//Next to refactor
+/*======== DeviceInfo =========*/
+/* DeviceInfo */
 var PixelRatioInfo = (function () {
     function PixelRatioInfo(_responsiveState, viewContainer) {
         this._responsiveState = _responsiveState;

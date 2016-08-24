@@ -16,6 +16,7 @@ require('rxjs/add/operator/share');
 require('rxjs/add/operator/debounce');
 var Rx_1 = require('rxjs/Rx');
 var const_1 = require('./const');
+// Configuration class in order to allow to change breakpoints values
 var ResponsiveConfig = (function () {
     function ResponsiveConfig(config) {
         this.config = {
@@ -40,6 +41,7 @@ var ResponsiveConfig = (function () {
 }());
 exports.ResponsiveConfig = ResponsiveConfig;
 var ResponsiveState = (function () {
+    //Optional config
     function ResponsiveState(responsiveConfig) {
         var _this = this;
         this._windows = {};
@@ -63,6 +65,11 @@ var ResponsiveState = (function () {
             }
             window.dispatchEvent(new Event('resize'));
         };
+        /*
+         *  Bootstrap states
+         *  xl / lg / md / sm / xs
+         *  @Custom breackpoints
+         */
         this.sizeObserver = function () {
             return _this._width = _this.getWidth('window');
         };
@@ -126,6 +133,7 @@ var ResponsiveState = (function () {
                 var msie = _this._userAgent.indexOf('msie ');
                 if (const_1.REG_BROWSERS.IE[0].test(_this._userAgent)) {
                     var ie_version = parseInt(_this._userAgent.substring(msie + 5, _this._userAgent.indexOf('.', msie)), 10);
+                    // IE 10 or older => return version number
                     if (ie_version == 7) {
                         return 'ie 7';
                     }
@@ -142,6 +150,7 @@ var ResponsiveState = (function () {
                 }
                 var trident = _this._userAgent.indexOf('trident/');
                 if (const_1.REG_BROWSERS.IE[1].test(_this._userAgent)) {
+                    // IE 11 => return version number
                     var rv = _this._userAgent.indexOf('rv:');
                     var ie_version = parseInt(_this._userAgent.substring(rv + 3, _this._userAgent.indexOf('.', rv)), 10);
                     if (ie_version == 11) {
@@ -151,11 +160,14 @@ var ResponsiveState = (function () {
                 }
                 var edge = _this._userAgent.indexOf('Edge/');
                 if (const_1.REG_BROWSERS.IE[2].test(_this._userAgent)) {
+                    // Edge (IE 12+) => return version number
+                    //let ie_version = parseInt(this.userAgent.substring(edge + 5, this.userAgent.indexOf('.', edge)), 10);
                     return 'ie +12';
                 }
             }
             catch (error) {
             }
+            // detect Error
             return null;
         };
         this.pixel_ratio = function () {
@@ -523,15 +535,18 @@ var ResponsiveState = (function () {
             };
         };
         this._responsiveConfig = !!responsiveConfig ? responsiveConfig : new ResponsiveConfig();
+        //Window resize observer
         var resize_observer = Rx_1.Observable
             .fromEvent(window, 'resize')
             .debounceTime(this._responsiveConfig.config.debounceTime)
             .defaultIfEmpty()
             .startWith(this.getWidth('window'));
+        //Get pixel ratio
         var pixel_ratio_observer = Rx_1.Observable
             .fromEvent(window, 'onload')
             .defaultIfEmpty()
             .startWith(this.getDevicePixelRatio());
+        //Get user agent
         var device_observer = Rx_1.Observable
             .fromEvent(window, 'onload')
             .defaultIfEmpty()
@@ -539,10 +554,12 @@ var ResponsiveState = (function () {
         var user_agent_observer = Rx_1.Observable.fromEvent(window, 'onload')
             .defaultIfEmpty()
             .startWith(this.userAgent_data());
+        //Window orientation changes observer
         var orientation_observer = Rx_1.Observable
             .fromEvent(window, 'orientationchange')
             .defaultIfEmpty()
             .startWith(this.getOrientation());
+        //Map operations
         this.elementoObservar = resize_observer.map(this.sizeOperations);
         this.anchoObservar = resize_observer.map(this.sizeObserver);
         this.browserObserver = device_observer.map(this.browserName);

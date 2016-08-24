@@ -16,6 +16,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var config_1 = require('../config/config');
 var responsive_base_1 = require('../config/responsive-base');
+/*
+ * DEVICES DIRECTIVES
+ * @Desktops / @Tablets / @Mobile
+ */
+/*======== SMART TV STATES =========*/
 var IsSmartTv = (function (_super) {
     __extends(IsSmartTv, _super);
     function IsSmartTv(templateRef, viewContainer, _responsiveState) {
@@ -44,6 +49,7 @@ var IsSmartTv = (function (_super) {
     return IsSmartTv;
 }(responsive_base_1.RESPONSIVE_BASE));
 exports.IsSmartTv = IsSmartTv;
+/*======== DESKTOPS STATES =========*/
 var IsDesktop = (function (_super) {
     __extends(IsDesktop, _super);
     function IsDesktop(templateRef, viewContainer, _responsiveState) {
@@ -72,6 +78,7 @@ var IsDesktop = (function (_super) {
     return IsDesktop;
 }(responsive_base_1.RESPONSIVE_BASE));
 exports.IsDesktop = IsDesktop;
+/*======== TABLETS STATES =========*/
 var IsTablet = (function (_super) {
     __extends(IsTablet, _super);
     function IsTablet(templateRef, viewContainer, _responsiveState) {
@@ -100,6 +107,7 @@ var IsTablet = (function (_super) {
     return IsTablet;
 }(responsive_base_1.RESPONSIVE_BASE));
 exports.IsTablet = IsTablet;
+/*======== MOBILE STATES =========*/
 var IsMobile = (function (_super) {
     __extends(IsMobile, _super);
     function IsMobile(templateRef, viewContainer, _responsiveState) {
@@ -128,6 +136,7 @@ var IsMobile = (function (_super) {
     return IsMobile;
 }(responsive_base_1.RESPONSIVE_BASE));
 exports.IsMobile = IsMobile;
+/*======== DEVICE STATES =========*/
 var ShowItDevice = (function (_super) {
     __extends(ShowItDevice, _super);
     function ShowItDevice(templateRef, viewContainer, _responsiveState) {
@@ -182,6 +191,11 @@ var HideItDevice = (function (_super) {
     return HideItDevice;
 }(responsive_base_1.RESPONSIVE_BASE));
 exports.HideItDevice = HideItDevice;
+/*
+ * STANDARD DEVICES DIRECTIVES
+ * @isIphone / @isIpad / @isAndroidMobile / @isAndroidTablet / @IsWindowsPhone
+ */
+/*======== IPHONE =========*/
 var IsIphone = (function (_super) {
     __extends(IsIphone, _super);
     function IsIphone(templateRef, viewContainer, _responsiveState) {
@@ -376,6 +390,10 @@ var HideItStandard = (function (_super) {
     return HideItStandard;
 }(responsive_base_1.RESPONSIVE_BASE));
 exports.HideItStandard = HideItStandard;
+/*
+ * ORIENTATION DEVICES DIRECTIVES
+ * @isIphone / @isPortrait / @isLandscape
+ */
 var IsPortrait = (function (_super) {
     __extends(IsPortrait, _super);
     function IsPortrait(templateRef, viewContainer, _responsiveState) {
@@ -432,6 +450,9 @@ var IsLandscape = (function (_super) {
     return IsLandscape;
 }(responsive_base_1.RESPONSIVE_BASE));
 exports.IsLandscape = IsLandscape;
+//NEXT TO REFACTOR
+/*======== DeviceInfo =========*/
+/* DeviceInfo */
 var DeviceInfo = (function () {
     function DeviceInfo(_responsiveState, viewContainer) {
         this._responsiveState = _responsiveState;
@@ -478,6 +499,7 @@ var DeviceInfo = (function () {
     return DeviceInfo;
 }());
 exports.DeviceInfo = DeviceInfo;
+/*======== deviceStandardInfo =========*/
 var DeviceStandardInfo = (function () {
     function DeviceStandardInfo(_responsiveState, viewContainer) {
         this._responsiveState = _responsiveState;
@@ -524,6 +546,7 @@ var DeviceStandardInfo = (function () {
     return DeviceStandardInfo;
 }());
 exports.DeviceStandardInfo = DeviceStandardInfo;
+/*======== OrientationInfo =========*/
 var OrientationInfo = (function () {
     function OrientationInfo(_responsiveState, viewContainer) {
         this._responsiveState = _responsiveState;

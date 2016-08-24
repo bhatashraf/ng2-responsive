@@ -16,6 +16,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var config_1 = require('../config/config');
 var responsive_base_1 = require('../config/responsive-base');
+/*
+* BROWSERS DIRECTIVES
+* @CHROME @FIREFOX @IE @OPERA
+*
+*/
+/*======== CHROME =========*/
 var IsChrome = (function (_super) {
     __extends(IsChrome, _super);
     function IsChrome(templateRef, viewContainer, _responsiveState) {
@@ -44,6 +50,7 @@ var IsChrome = (function (_super) {
     return IsChrome;
 }(responsive_base_1.RESPONSIVE_BASE));
 exports.IsChrome = IsChrome;
+/*======== FIREFOX =========*/
 var IsFirefox = (function (_super) {
     __extends(IsFirefox, _super);
     function IsFirefox(templateRef, viewContainer, _responsiveState) {
@@ -72,6 +79,7 @@ var IsFirefox = (function (_super) {
     return IsFirefox;
 }(responsive_base_1.RESPONSIVE_BASE));
 exports.IsFirefox = IsFirefox;
+/*======== SAFARI =========*/
 var IsSafari = (function (_super) {
     __extends(IsSafari, _super);
     function IsSafari(templateRef, viewContainer, _responsiveState) {
@@ -100,6 +108,7 @@ var IsSafari = (function (_super) {
     return IsSafari;
 }(responsive_base_1.RESPONSIVE_BASE));
 exports.IsSafari = IsSafari;
+/*======== OPERA =========*/
 var IsOpera = (function (_super) {
     __extends(IsOpera, _super);
     function IsOpera(templateRef, viewContainer, _responsiveState) {
@@ -128,6 +137,7 @@ var IsOpera = (function (_super) {
     return IsOpera;
 }(responsive_base_1.RESPONSIVE_BASE));
 exports.IsOpera = IsOpera;
+/*======== IE =========*/
 var IsIE = (function (_super) {
     __extends(IsIE, _super);
     function IsIE(templateRef, viewContainer, _responsiveState) {
@@ -211,6 +221,11 @@ var HideItBrowser = (function (_super) {
     return HideItBrowser;
 }(responsive_base_1.RESPONSIVE_BASE));
 exports.HideItBrowser = HideItBrowser;
+/*
+* IE VERSIONS DIRECTIVES
+* @IE9 @IE10 @IE11 @IE12
+*
+*/
 var IsIE9 = (function (_super) {
     __extends(IsIE9, _super);
     function IsIE9(templateRef, viewContainer, _responsiveState) {
@@ -377,6 +392,7 @@ var HideIEVersion = (function (_super) {
     return HideIEVersion;
 }(responsive_base_1.RESPONSIVE_BASE));
 exports.HideIEVersion = HideIEVersion;
+/*======== BrowserInfo =========*/
 var BrowserInfo = (function () {
     function BrowserInfo(_responsiveState, viewContainer) {
         this._responsiveState = _responsiveState;
@@ -423,6 +439,7 @@ var BrowserInfo = (function () {
     return BrowserInfo;
 }());
 exports.BrowserInfo = BrowserInfo;
+/*======== ieInfo =========*/
 var IeInfo = (function () {
     function IeInfo(_responsiveState, viewContainer) {
         this._responsiveState = _responsiveState;

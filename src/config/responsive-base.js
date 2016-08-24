@@ -1,11 +1,13 @@
 "use strict";
 var core_1 = require('@angular/core');
+/*======== RESPONSIVE BASE CLASS =========*/
 var RESPONSIVE_BASE = (function () {
     function RESPONSIVE_BASE(templateRef, viewContainer, _responsiveState) {
         this.templateRef = templateRef;
         this.viewContainer = viewContainer;
         this._responsiveState = _responsiveState;
         this._noRepeat = 0;
+        //Active subscription
         this.set_active_subscriptions = {
             bootstrap: false,
             browser: false,
@@ -16,6 +18,7 @@ var RESPONSIVE_BASE = (function () {
             ie: false,
             sizes: false
         };
+        //Input - Output
         this.eventChanges = new core_1.EventEmitter();
     }
     RESPONSIVE_BASE.prototype.setGrid = function (grid_state, directive) {
@@ -56,6 +59,7 @@ var RESPONSIVE_BASE = (function () {
         this._directive = directive;
     };
     RESPONSIVE_BASE.prototype.ngOnInit = function () {
+        //Initialize subscriptios
         if (this.set_active_subscriptions.bootstrap == true)
             this._subscription_Bootstrap = this._responsiveState.elementoObservar.subscribe(this.updateView.bind(this));
         if (this.set_active_subscriptions.browser == true)
@@ -74,6 +78,7 @@ var RESPONSIVE_BASE = (function () {
             this._subscription_custom_sizes = this._responsiveState.anchoObservar.subscribe(this.updateView.bind(this));
     };
     RESPONSIVE_BASE.prototype.ngOnDestroy = function () {
+        //unsubscribe all subscriptions actives
         if (this.set_active_subscriptions.bootstrap == true)
             this._subscription_Bootstrap.unsubscribe();
         if (this.set_active_subscriptions.browser == true)

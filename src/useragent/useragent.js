@@ -10,13 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var config_1 = require('../config/config');
+/*======== RESPONSIVE MULTIPLE =========*/
 var UserAgentInfo = (function () {
+    ////CONSTRUCTOR
     function UserAgentInfo(_responsiveState) {
         this._responsiveState = _responsiveState;
         this.info = new core_1.EventEmitter();
     }
+    ////LIFECICLE METHODS
     UserAgentInfo.prototype.ngOnInit = function () { this._subscription_UserAgent = this._responsiveState.userAgentObserver.subscribe(this.emitUserAgent.bind(this)); };
     UserAgentInfo.prototype.ngOnDestroy = function () { this._subscription_UserAgent.unsubscribe(); };
+    ////EMIT EVENT
     UserAgentInfo.prototype.emitUserAgent = function (value) { this.info.emit(value); };
     UserAgentInfo = __decorate([
         core_1.Directive({

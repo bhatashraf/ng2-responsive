@@ -11,11 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var config_1 = require('../config/config');
 var ResponsiveWindow = (function () {
+    ////CONSTRUCTOR
     function ResponsiveWindow(_responsiveState, el) {
         this._responsiveState = _responsiveState;
         this.el = el;
         this.element = el.nativeElement;
     }
+    ////LIFECICLE METHODS
     ResponsiveWindow.prototype.ngOnInit = function () { this._responsiveState.registerWindow(this); };
     ResponsiveWindow.prototype.ngDoCheck = function () {
         var update = this._ifValueChanged(this._noRepeat, this.name);
@@ -25,7 +27,9 @@ var ResponsiveWindow = (function () {
         }
     };
     ResponsiveWindow.prototype.ngOnDestroy = function () { this._responsiveState.unregisterWindow(this); };
+    ////Public Methods
     ResponsiveWindow.prototype.getWidth = function () { return this.element.offsetWidth; };
+    ////Private Methods
     ResponsiveWindow.prototype._ifValueChanged = function (oldValue, newValue) {
         if (oldValue === newValue) {
             return false;

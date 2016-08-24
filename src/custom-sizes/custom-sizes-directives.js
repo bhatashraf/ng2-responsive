@@ -16,6 +16,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var config_1 = require('../config/config');
 var responsive_base_1 = require('../config/responsive-base');
+/*======== CUSTOM SIZES =========*/
+/* show */
 var ShowItSizes = (function (_super) {
     __extends(ShowItSizes, _super);
     function ShowItSizes(templateRef, viewContainer, _responsiveState) {
@@ -43,6 +45,7 @@ var ShowItSizes = (function (_super) {
     return ShowItSizes;
 }(responsive_base_1.RESPONSIVE_BASE));
 exports.ShowItSizes = ShowItSizes;
+/* hide */
 var HideItSizes = (function (_super) {
     __extends(HideItSizes, _super);
     function HideItSizes(templateRef, viewContainer, _responsiveState) {

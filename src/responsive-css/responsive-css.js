@@ -10,7 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var config_1 = require('../config/config');
+//Dont work - [ON DEV]
 var ResponsiveClass = (function () {
+    //public  statechanges: EventEmitter<any> = new EventEmitter();
     function ResponsiveClass(_responsiveState, el, _renderer) {
         this._responsiveState = _responsiveState;
         this.el = el;
@@ -18,6 +20,16 @@ var ResponsiveClass = (function () {
         this.element = el.nativeElement;
     }
     Object.defineProperty(ResponsiveClass.prototype, "xl", {
+        /*
+        @Input() set xl(_class: string| string []) {
+            console.info(_class);
+            if (this.xlClass !== undefined || this.xlClass !== null) {
+                this.xlActive = true;
+                this.xlClass = _class;
+                this.updateData(this.currentstate);
+            }
+        }
+        */
         set: function (_class) {
             console.info(_class);
             if (this.xlClass !== undefined || this.xlClass !== null) {
@@ -80,6 +92,7 @@ var ResponsiveClass = (function () {
             _this.currentstate = value;
         });
     };
+    //Implements change detector
     ResponsiveClass.prototype.ngDoCheck = function () {
     };
     ResponsiveClass.prototype.ngOnDestroy = function () {

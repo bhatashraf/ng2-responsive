@@ -11,6 +11,7 @@ var responsive_1 = require('./responsive/responsive');
 var responsive_css_1 = require('./responsive-css/responsive-css');
 var responsive_window_1 = require('./responsive-window/responsive-window');
 var useragent_1 = require('./useragent/useragent');
+/* EXPORT => MODULES */
 __export(require('./config/config'));
 __export(require('./bootstrap/bootstrap-directives'));
 __export(require('./devices/devices-directives'));
@@ -21,6 +22,7 @@ __export(require('./responsive/responsive'));
 __export(require('./responsive-css/responsive-css'));
 __export(require('./responsive-window/responsive-window'));
 __export(require('./useragent/useragent'));
+/* RESPONSIVE DIRECTIVES */
 exports.RESPONSIVE_DIRECTIVES = [
     responsive_1.Responsive, bootstrap_directives_1.XL, bootstrap_directives_1.LG, bootstrap_directives_1.MD, bootstrap_directives_1.SM, bootstrap_directives_1.XS, bootstrap_directives_1.ShowItBootstrap, bootstrap_directives_1.HideItBootstrap, devices_directives_1.IsSmartTv, devices_directives_1.IsDesktop, devices_directives_1.IsTablet, devices_directives_1.IsMobile, devices_directives_1.ShowItDevice, devices_directives_1.HideItDevice, devices_directives_1.IsIphone, devices_directives_1.IsIpad,
     devices_directives_1.IsAndroidMobile, devices_directives_1.IsAndroidTablet, devices_directives_1.IsWindowsPhone, devices_directives_1.ShowItStandard, devices_directives_1.HideItStandard, devices_directives_1.IsPortrait, devices_directives_1.IsLandscape, custom_sizes_directives_1.ShowItSizes, custom_sizes_directives_1.HideItSizes,
