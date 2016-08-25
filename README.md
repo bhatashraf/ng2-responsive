@@ -1,3 +1,5 @@
+![n2-responsive](/demo/assets/img/ng2-responsive-0-4-0-thin.jpg?raw=true)
+
 ### DEPRECATED
 We're moving to a new project name and slightly different file format for rc.5
 - [ng2-responsive](https://www.npmjs.com/package/ng2-responsive)
