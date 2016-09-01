@@ -211,10 +211,10 @@ var ResponsiveState = (function () {
         this.orientation_device = function () {
             try {
                 if (_this.isMobile() || _this.isTablet()) {
-                    if (_this._screenHeight > _this._screenWidth) {
+                    if (window.innerHeight > window.innerWidth) {
                         return 'portrait';
                     }
-                    else if (_this._orientation === 90 || _this._orientation === -90) {
+                    else {
                         return 'landscape';
                     }
                 }

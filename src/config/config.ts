@@ -268,9 +268,9 @@ export class ResponsiveState {
     private orientation_device = (): string => {
         try {
             if (this.isMobile() || this.isTablet()) {
-                if (this._screenHeight > this._screenWidth) {
+                if (window.innerHeight > window.innerWidth) {
                     return 'portrait';
-                } else if (this._orientation === 90 || this._orientation === -90) {
+                } else {
                     return 'landscape';
                 }
             } else if (this.isSMART() || this.isDesktop()) {
